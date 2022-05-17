@@ -12,7 +12,9 @@ const Detail: NextPage = () => {
     back,
   } = useRouter();
 
-  const { data, isLoading } = useGetOneCharacterQuery(id, { skip: !id });
+  const { data, isLoading } = useGetOneCharacterQuery(Number(id), {
+    skip: !id,
+  });
   return (
     <>
       <BackDropLoader load={isLoading} />
@@ -44,7 +46,7 @@ const Detail: NextPage = () => {
           />
         </Box>
         <Typography paragraph color="text.secondary">
-          <strong>Especie:</strong> {data?.specie || "unknow"}
+          <strong>Especie:</strong> {data?.species || "unknow"}
           <br />
           <strong>Genero:</strong> {data?.gender || "unknow"}
           <br />
@@ -53,7 +55,7 @@ const Detail: NextPage = () => {
         <Typography paragraph fontWeight="bold" color="text.secondary">
           Episodios en el que se vió:
         </Typography>
-        {data?.episode?.map((i: string, index: number) => (
+        {data?.episode?.map((i, index) => (
           <Typography key={index} paragraph color="text.secondary">
             Episodio {i.split("/").pop()}
           </Typography>

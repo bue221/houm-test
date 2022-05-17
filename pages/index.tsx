@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import {
   Button,
@@ -16,6 +17,7 @@ import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useForm } from "react-hook-form";
 import HeroCard from "components/HeroCard";
+import { ICharacter } from "types";
 
 interface IForm {
   gender: string;
@@ -25,7 +27,7 @@ interface IForm {
 
 const Home: NextPage = () => {
   const [page, setPage] = useState(1);
-  const [mainData, setMainData] = useState<any>([]);
+  const [mainData, setMainData] = useState<Array<ICharacter>>([]);
   const { register, watch, setValue } = useForm<IForm>({
     defaultValues: {
       status: "",
@@ -159,7 +161,7 @@ const Home: NextPage = () => {
               py: 2,
             }}
           >
-            {mainData?.map((i: any, index: number) => (
+            {mainData?.map((i, index: number) => (
               <HeroCard key={index} {...i} />
             ))}
           </Box>

@@ -15,6 +15,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CircleIcon from "@mui/icons-material/Circle";
 import { ExpandMore } from "components/ExpandMore";
 import { useRouter } from "next/router";
+import { ICharacter } from "types";
 
 export default function HeroCard({
   name,
@@ -25,7 +26,7 @@ export default function HeroCard({
   location,
   episode,
   id,
-}: any) {
+}: ICharacter) {
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => setExpanded(!expanded);
   const router = useRouter();
